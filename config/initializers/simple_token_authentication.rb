@@ -7,7 +7,7 @@ SimpleTokenAuthentication.configure do |config|
   # If true, user is stored in the session and the authentication token and
   # email may be provided only once.
   # If false, users must provide their authentication token and email at every request.
-  # config.sign_in_token = false
+  config.sign_in_token = false
 
   # Configure the name of the HTTP headers watched for authentication.
   #
@@ -27,6 +27,6 @@ SimpleTokenAuthentication.configure do |config|
   #   And the token authentification handler for SuperAdmin watches the following headers:
   #     `X-Admin-Auth-Token, X-SuperAdmin-Email`
   #
-  config.header_names = { user: { authentication_token: 'X-User-Token', email: 'X-User-Email' } }
+  # config.header_names = { user: { authentication_token: 'X-User-Token', email: 'X-User-Email' } }
 
 end

@@ -12,12 +12,21 @@ class UsersController < ApplicationController
         render json: @user
     end
 
-    def create
-        @user = User.new(params[:user])
+    def update
+        @user = User.find(params[:id])
     end
 
-    def new
-        @user = User.new
-        render json: @user
+    def profile
+        render json: current_user
     end
+
+    def users_formation
+        render json: current_user.recent_promotion
+    end
+
+    private
+        def params_user
+
+        end
+
 end

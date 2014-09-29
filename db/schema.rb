@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140926055000) do
+ActiveRecord::Schema.define(version: 20140928155827) do
 
   create_table "formations", force: true do |t|
     t.string   "name"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 20140926055000) do
   end
 
   add_index "formations", ["site_id"], name: "index_formations_on_site_id", using: :btree
+
+  create_table "groups", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "promotion_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "groups", ["promotion_id"], name: "index_groups_on_promotion_id", using: :btree
+  add_index "groups", ["user_id"], name: "index_groups_on_user_id", using: :btree
 
   create_table "information", force: true do |t|
     t.string   "description"
@@ -34,14 +44,12 @@ ActiveRecord::Schema.define(version: 20140926055000) do
 
   create_table "promotions", force: true do |t|
     t.datetime "promo_date"
-    t.integer  "user_id"
     t.integer  "formation_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "promotions", ["formation_id"], name: "index_promotions_on_formation_id", using: :btree
-  add_index "promotions", ["user_id"], name: "index_promotions_on_user_id", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "name"

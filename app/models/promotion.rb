@@ -1,4 +1,5 @@
 class Promotion < ActiveRecord::Base
-    belongs_to :user
+    has_many :groups
     belongs_to :formation
+    has_many :users, through: :groups
 end

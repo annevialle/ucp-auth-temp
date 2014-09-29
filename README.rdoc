@@ -1,28 +1,24 @@
 == README
+ucp-auth
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Login => http://your_url/sessions (POST)
+params email, password
+return false or current_user
 
-Things you may want to cover:
+is_signed =>  http://your_url/sessions/signed_in (GET)
+return true or false if user is login
 
-* Ruby version
+logout =>  http://your_url/sessions/destroy (GET)
+destroy user session
 
-* System dependencies
+profile => http://your_url/users/profile (GET)
+get current_user 
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+user_formation => http://your_url/users/users_formation (GET)
+get all students from current_user promo
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+
+
+
+

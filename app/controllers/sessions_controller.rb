@@ -6,12 +6,21 @@ class SessionsController < ApplicationController
             render json: @user
         else
             render json: {
-                errors: "sss"
+                errors: "wrong login"
             }
         end
     end
 
     def signed_in
         render json: { user_signed_in:  user_signed_in? }
+    end
+
+    def destroy
+        current_user.authentication_token = ""
+        current_user.save
+        sign_out current_user
+        render json: {
+            results: "logout"
+        }
     end
 end
