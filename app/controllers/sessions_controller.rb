@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
     def create
-        @user = User.find_for_database_authentication(email: params['params']['email'])
-        if @user && @user.valid_password?(params['params']['password'])
+        @user = User.find_for_database_authentication(email: params['email'])
+        if @user && @user.valid_password?(params['password'])
             sign_in @user
             render json: @user
         else

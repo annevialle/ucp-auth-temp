@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     end
 
     def update
-        @user = User.find(params[:id])
+        @user = current_user.update_attributes(params_user)
     end
 
     def profile
@@ -24,9 +24,14 @@ class UsersController < ApplicationController
         render json: current_user.recent_promotion
     end
 
+    def update_profile
+        current_user.update_attributes(params_user)
+        render json: current_user
+    end
+
     private
         def params_user
-
+            params.require(:user).permit(:email, information_attributes: [:description, :phone])
         end
 
 end

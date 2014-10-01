@@ -1,10 +1,10 @@
 UcpAuth::Application.routes.draw do
     devise_for :users
-
     resources :users, except: [:create] do 
         collection do
             get 'profile'
             get 'users_formation'
+            put 'update_profile'
         end
     end
 

@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
     has_one :information
     has_many :groups
     has_many :promotions, through: :groups
+    accepts_nested_attributes_for :information
 
     def add_roles
         unless self.type.nil?
