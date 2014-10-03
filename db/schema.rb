@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140928155827) do
+ActiveRecord::Schema.define(version: 20141001064424) do
+
+  create_table "events", force: true do |t|
+    t.integer  "promotion_id"
+    t.string   "type"
+    t.datetime "event_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "events", ["promotion_id"], name: "index_events_on_promotion_id", using: :btree
 
   create_table "formations", force: true do |t|
     t.string   "name"
@@ -87,12 +97,15 @@ ActiveRecord::Schema.define(version: 20140928155827) do
   end
 
   create_table "timesheets", force: true do |t|
-    t.string   "event"
-    t.datetime "event_time"
-    t.integer  "formation_id"
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.datetime "timehseet_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "timesheets", ["event_id"], name: "index_timesheets_on_event_id", using: :btree
+  add_index "timesheets", ["user_id"], name: "index_timesheets_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

@@ -1,23 +1,25 @@
 UcpAuth::Application.routes.draw do
     devise_for :users
-    resources :users, except: [:create] do 
-        collection do
-            get 'profile'
-            get 'users_formation'
-            put 'update_profile'
+    namespace :api do
+        resources :users, except: [:create] do 
+            collection do
+                get 'profile'
+                get 'users_formation'
+                put 'update_profile'
+            end
+        end
+
+        resources :sessions do
+            collection do
+                get 'signed_in'
+                get 'is_admin'
+            end
+        end
+
+        namespace :admin do
+            resources :users
         end
     end
-
-    resources :sessions do
-        collection do
-            get 'signed_in'
-        end
-    end
-
-    namespace :admin do
-        resources :users
-    end
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

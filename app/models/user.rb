@@ -25,6 +25,6 @@ class User < ActiveRecord::Base
     end
 
     def recent_promotion
-        self.promotions.order("promo_date DESC").first.users
+        self.promotions.order("promo_date DESC").first
     end
 end
