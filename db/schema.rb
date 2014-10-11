@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141001064424) do
+ActiveRecord::Schema.define(version: 20141011125545) do
 
   create_table "events", force: true do |t|
     t.integer  "promotion_id"
@@ -19,6 +19,10 @@ ActiveRecord::Schema.define(version: 20141001064424) do
     t.datetime "event_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "date_start"
+    t.datetime "date_end"
+    t.string   "description"
+    t.string   "event"
   end
 
   add_index "events", ["promotion_id"], name: "index_events_on_promotion_id", using: :btree
@@ -48,6 +52,9 @@ ActiveRecord::Schema.define(version: 20141001064424) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "facebook"
+    t.string   "twitter"
+    t.string   "linkedin"
   end
 
   add_index "information", ["user_id"], name: "index_information_on_user_id", using: :btree
@@ -99,7 +106,6 @@ ActiveRecord::Schema.define(version: 20141001064424) do
   create_table "timesheets", force: true do |t|
     t.integer  "user_id"
     t.integer  "event_id"
-    t.datetime "timehseet_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

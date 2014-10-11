@@ -16,6 +16,8 @@ UcpAuth::Application.routes.draw do
             end
         end
 
+        resources :events, only: :index
+
         namespace :admin do
             resources :users
         end

@@ -32,7 +32,7 @@ module Api
 
         private
             def params_user
-                params.require(:user).permit(:email, information_attributes: [:description, :phone])
+                params.require(:user).permit(:email, information_attributes: [:description, :phone, :facebook, :twitter, :linkdnl])
             end
 
     end
