@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 20141011125545) do
   create_table "timesheets", force: true do |t|
     t.integer  "user_id"
     t.integer  "event_id"
+    t.datetime "timehseet_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

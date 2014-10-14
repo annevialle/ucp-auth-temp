@@ -14,7 +14,7 @@ development:
   database: ucp_auth
   pool: 5
   username: root
-  password: rdev
+  password: 
   socket: /tmp/mysql.sock
 
 production:
