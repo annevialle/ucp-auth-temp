@@ -1,12 +1,14 @@
 == README
-ucp-auth
+ucp-auth-temp
 
-systéme d'authentification des utilisateurs
+Adaptation de l'API ucp-auth pour gérer les utilisateurs de type "association".
 
-chaque requete se font sous /api
-pour pouvoir recuperer les informations il faut forcement être authentifié
+Système d'authentification des utilisateurs.
+
+Chaque requête se fait sous /api.
+Pour pouvoir récupérer les informations, il faut forcement être authentifié.
 - Lors de l'authentification une token est généré.
-- La seul route accessible en utilisateur non authentifié est la route de login.
+- La seule route accessible en utilisateur non authentifié est la route de login.
 
 #route authentification
 url /api/sessions
