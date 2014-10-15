@@ -1,21 +1,68 @@
 == README
 ucp-auth
 
-Login => http://your_url/sessions (POST)
+systéme d'authentification des utilisateurs
+
+chaque requete se font sous /api
+pour pouvoir recuperer les informations il faut forcement être authentifié
+- Lors de l'authentification une token est généré.
+- La seul route accessible en utilisateur non authentifié est la route de login.
+
+#route authentification
+url /api/sessions
+method POST
 params email, password
 return false or current_user
 
-is_signed =>  http://your_url/sessions/signed_in (GET)
-return true or false if user is login
+#route check if user is login
+url /api/sessions/signed_in
+method GET
+return true or false
 
-logout =>  http://your_url/sessions/destroy (GET)
-destroy user session
+#route check if user is admin
+url /api/sessions/is_admin
+method GET
+return true or false
 
-profile => http://your_url/users/profile (GET)
-get current_user 
+#route destroy user session
+method DELETE
+url /api/sessions/destroy
+note: token regénéré à chaque logout
 
-user_formation => http://your_url/users/users_formation (GET)
-get all students from current_user promo
+#route get the current user profile
+method GET
+return current_user
+url /api/users/profile
+
+#route update current user profile
+method PUT
+params user
+url /api/users/update_profile
+
+#route get all students from current_user promo
+METHOD GET
+return array of students
+url /api/users/users_formation 
+
+#route get all user event
+METHOD GET
+return array of events
+url /api/events
+
+Puisque que utilisateurs classique ne pouvant modifier que les informations les concernant il existe d'autres routes préfixés /api/admin
+les routes préfixés /api/admin peuvent faire la même chose que /api avec en plus la possibilité de créer, supprimer, modifier les resources.
+si vous voulez requeter à partir de ruby on rails vous pouvez utiliser cette gem:
+https://github.com/rest-client/rest-client
+
+une fois authentifié il faut garder en session la token, mail et l'envoyer dans le header à chaque requete.
+
+la gem utilisé pour le systéme de token est la suivante:
+https://github.com/gonzalo-bulnes/simple_token_authentication
+
+
+
+
+
 
 
 

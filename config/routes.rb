@@ -1,5 +1,6 @@
 UcpAuth::Application.routes.draw do
     devise_for :users
+    resources :nfc, only: :index 
     namespace :api do
         resources :users, except: [:create] do 
             collection do
@@ -17,7 +18,6 @@ UcpAuth::Application.routes.draw do
         end
 
         resources :events, only: :index
-
         namespace :admin do
             resources :users
         end
